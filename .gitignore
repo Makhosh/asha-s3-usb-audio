@@ -1,0 +1,18 @@
+# ESP-IDF build output and local configuration
+/build/
+/sdkconfig
+/sdkconfig.old
+/managed_components/
+
+# Local credentials
+/main/wifi_credentials.h
+
+# IDE and operating-system files
+/.idea/
+.DS_Store
+Thumbs.db
+
+# Firmware build artifacts
+*.elf
+*.map
+*.bin

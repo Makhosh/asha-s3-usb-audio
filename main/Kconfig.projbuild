@@ -1,0 +1,31 @@
+menu "Example Configuration"
+
+    config EXAMPLE_PEER_ADDR
+        string "Peer Address"
+        default "ADDR_ANY"
+        help
+            Enter the peer address in aa:bb:cc:dd:ee:ff form to connect to a specific peripheral
+
+    config EXAMPLE_EXTENDED_ADV
+        bool
+        depends on SOC_BLE_50_SUPPORTED && BT_NIMBLE_50_FEATURE_SUPPORT
+        default y if SOC_ESP_NIMBLE_CONTROLLER
+        select BT_NIMBLE_EXT_ADV
+        prompt "Enable Extended Adv"
+        help
+            Use this option to enable extended advertising in the example.
+            If this option is disabled, ensure config BT_NIMBLE_EXT_ADV is
+            also disabled from Nimble stack menuconfig
+endmenu
+
+menu "ASHA Configuration"
+
+    config ASHA_START_VOLUME_DB
+        int "ASHA stream volume attenuation (dB)"
+        range -128 0
+        default -80
+        help
+            Signed volume attenuation placed in the ASHA AudioControlPoint Start
+            command. Valid values are -128 dB through 0 dB. The default -80 dB
+            preserves the existing wire value 0xb0.
+endmenu
